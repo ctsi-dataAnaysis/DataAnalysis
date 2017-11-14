@@ -1,6 +1,6 @@
 import business.SpringBusinessConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
-import web.controller.SpringWebConfig;
+import web.SpringWebConfig;
 
 /**
  * Created by Zhao Qing on 2017/11/14.
