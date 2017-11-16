@@ -18,6 +18,10 @@ function check_register(){
     var name = $("#r_user_name").val();
     var pass = $("#r_password").val();
     var email = $("r_email").val();
+
+    $.post("http://localhost:8080/login/register",{"username":name,"password":pass,"email":email}) // 发送post请求
+    alert("已发送post请求")
+
     if(name!="" && pass=="" && email != "")
     {
         alert("注册成功！");

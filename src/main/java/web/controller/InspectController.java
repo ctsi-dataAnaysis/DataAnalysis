@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class InspectController {
 
-    @RequestMapping(value = "/login")
-    public String login(){
-        return "login";
-    }
+//    @RequestMapping(value = "/login")
+//    public String login(){
+//        return "login";
+//    }
 }
