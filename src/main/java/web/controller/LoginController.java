@@ -5,6 +5,7 @@ import business.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import utils.TimeUtil;
 import web.UserTest;
 
 import java.util.HashMap;
@@ -34,7 +35,7 @@ public class LoginController {
             System.out.println(message);
             return "login";
         }
-        User user = new User(params.get("username"), params.get("password"), params.get("email"));
+        User user = new User(params.get("username"), params.get("password"), params.get("email"), TimeUtil.nowTime());
         userService.save(user);
         message = "用户创建成功";
         System.out.println(message);
@@ -53,6 +54,8 @@ public class LoginController {
 //        userService.save(user);
 //        message = "用户创建成功";
 //        System.out.println(message);
+        User user = new User("walkingzq","123456","walkingzq@163.com",TimeUtil.nowTime());
+        userService.save(user);
         return "login";
     }
 
@@ -62,6 +65,7 @@ public class LoginController {
         System.out.println("接收成功");
         return "login";
     }
+
     @PostMapping(value = "/register3")
     public String login3(@RequestParam UserTest userTest){
         System.out.println(userTest);

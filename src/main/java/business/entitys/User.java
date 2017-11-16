@@ -26,17 +26,16 @@ public class User {
 
     private String email;//用户邮箱
 
-    private String createTime = TimeUtil.nowTime();//用户创建时间
+    private String createTime;//用户创建时间
 
     public User(){
-        this.createTime = TimeUtil.nowTime();
     }
 
-    public User(String username, String password, String email){
+    public User(String username, String password, String email,String createTime){
         this.username = username;
         this.password = password;
         this.email = email;
-        this.createTime = TimeUtil.nowTime();
+        this.createTime = createTime;
     }
 
     public Integer getId() {

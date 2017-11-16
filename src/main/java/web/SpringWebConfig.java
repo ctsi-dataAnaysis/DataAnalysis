@@ -6,6 +6,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -29,6 +30,11 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter implements Applicat
             throws BeansException {
         this.applicationContext = applicationContext;
     }
+
+//    @Bean
+//    public MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter(){
+//       return new MappingJackson2HttpMessageConverter();
+//    }
 
     /**
      * Configure a handler to delegate unhandled requests by forwarding to the
