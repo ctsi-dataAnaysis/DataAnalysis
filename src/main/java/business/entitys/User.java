@@ -2,6 +2,7 @@ package business.entitys;
 
 //import org.springframework.data.annotation.Id;
 import utils.TimeUtil;
+import web.requestdata.RegisterData;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,9 +27,16 @@ public class User {
 
     private String email;//用户邮箱
 
-    private String createTime;//用户创建时间
+    private String createTime = TimeUtil.nowTime();//用户创建时间
 
     public User(){
+    }
+
+    //利用RegisterData来构造User对象
+    public User(RegisterData registerData){
+        this.username = registerData.getUsername();
+        this.password = registerData.getPassword();
+        this.email = registerData.getEmail();
     }
 
     public User(String username, String password, String email,String createTime){

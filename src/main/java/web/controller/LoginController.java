@@ -1,14 +1,12 @@
 package web.controller;
 
-import business.entitys.User;
 import business.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import utils.TimeUtil;
-import web.UserTest;
+import web.requestdata.LoginData;
 
-import java.util.HashMap;
 
 /**
  * Created by Zhao Qing on 2017/11/15.
@@ -20,6 +18,9 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
+//    @ModelAttribute("username")
+//    public String username(){return }
+
     private String message;//返回给model的提示信息
 
     @GetMapping
@@ -27,49 +28,22 @@ public class LoginController {
         return "login";
     }
 
-    @PostMapping(value = "/register")
-    public String login(@RequestBody HashMap<String,String> params){
-        System.out.println("post请求接收成功：" + params);
-        if (userService.isUserExist(params.get("username"))){
-            message = "用户名已存在";
-            System.out.println(message);
-            return "login";
+    /**
+     * 接收login请求
+     * @param loginData
+     * @return {登录成功界面} 如果用户名和密码验证通过;{login页面} 否则。
+     */
+    @PostMapping
+//    @ResponseBody
+    public String login(@RequestBody LoginData loginData, Model model){
+        System.out.println(loginData);
+        if (userService.isUserValid(loginData.getUsername(), loginData.getPassword())){
+            System.out.println("用户有效");
+            model.addAttribute("username",loginData.getUsername());//设定属性
+            return "index";
         }
-        User user = new User(params.get("username"), params.get("password"), params.get("email"), TimeUtil.nowTime());
-        userService.save(user);
-        message = "用户创建成功";
-        System.out.println(message);
+        System.out.println("用户无效");
         return "login";
     }
 
-    @PostMapping(value = "/register1")
-    public String login1(@RequestBody String params){
-        System.out.println("post请求接收成功：" + params);
-//        if (userService.isUserExist(params.get("username"))){
-//            message = "用户名已存在";
-//            System.out.println(message);
-//            return "login";
-//        }
-//        User user = new User(params.get("username"), params.get("password"), params.get("email"));
-//        userService.save(user);
-//        message = "用户创建成功";
-//        System.out.println(message);
-        User user = new User("walkingzq","123456","walkingzq@163.com",TimeUtil.nowTime());
-        userService.save(user);
-        return "login";
-    }
-
-    @PostMapping(value = "/register2")
-    public String login2(@RequestBody UserTest userTest){
-        System.out.println(userTest);
-        System.out.println("接收成功");
-        return "login";
-    }
-
-    @PostMapping(value = "/register3")
-    public String login3(@RequestParam UserTest userTest){
-        System.out.println(userTest);
-        System.out.println("接收成功");
-        return "login";
-    }
 }

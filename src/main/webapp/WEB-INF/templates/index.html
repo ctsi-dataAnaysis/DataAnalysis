@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -110,6 +110,8 @@
                         <!--<li><a href="/">注册/登录</a></li>-->
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
+                        <p th:text="#{index.testzq}"></p>
+                        <li th:utext="#{index.welcome(${username})}">欢迎您,用户姓名</li>
                         <li><a href="login.html">注册/登录</a></li>
                     </ul>
                 </div>  

@@ -3,15 +3,19 @@ package web;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.MessageSourceResourceBundle;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.thymeleaf.messageresolver.StandardMessageResolver;
 import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
@@ -40,6 +44,18 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter implements Applicat
     @Override
     public void extendMessageConverters(List<HttpMessageConverter<?>> converters){
         converters.add(new MappingJackson2HttpMessageConverter());
+    }
+
+
+    /*
+     *  Message externalization/internationalization
+     */
+    @Bean
+    public ResourceBundleMessageSource messageSource() {
+        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+        messageSource.setBasename("Messages");
+        messageSource.setDefaultEncoding("UTF-8");
+        return messageSource;
     }
 
     /**
@@ -87,5 +103,6 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter implements Applicat
         viewResolver.setCharacterEncoding("UTF-8");
         return viewResolver;
     }
+
 
 }
