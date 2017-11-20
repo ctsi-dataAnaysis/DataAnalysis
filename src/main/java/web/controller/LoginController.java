@@ -1,7 +1,10 @@
 package web.controller;
 
 import business.service.UserService;
+import com.sun.deploy.net.HttpResponse;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -32,19 +35,24 @@ public class LoginController {
      */
     @PostMapping
     @ResponseBody
-    public int login(@RequestBody LoginData loginData, Model model){
+    public String login(@RequestBody LoginData loginData, Model model){
         System.out.println(loginData);
         if (!userService.isUserExist(loginData.getUsername())){
-            return -1;//用户名不存在
+            return "-1";//用户名不存在
+//            return "login";
         }
         if (userService.isUserValid(loginData.getUsername(), loginData.getPassword())){
             System.out.println("用户有效");
             model.addAttribute("username",loginData.getUsername());//设定属性
+
 //            username = loginData.getUsername();
-            return 0;//用户有效
+            return "0";//用户有效
+//            return "redirect:/user/" + loginData.getUsername();
         }
         System.out.println("用户无效");
-        return -2;//密码与用户名不匹配
+        return "-2";//密码与用户名不匹配
+//        return "login";
     }
+
 
 }

@@ -8,65 +8,67 @@ function check_login(){
         url:"/login",
         contentType:"application/json;charset=utf-8",
         data:JSON.stringify(loginData),
-        success:function (res) {
-            alert(res);
-
+        success:function (data) {
+            if (data == '0'){
+                window.location.href = "/user/" + username;
+                alert("欢迎使用CTSI数据分析平台");
+            }else if (data == '-1'){
+                alert("用户不存在")
+            }else if (data == '-2'){
+                alert("密码错误")
+            }
         },
         error:function (res) {
-            alert(res)
-            $("#login_form").removeClass('shake_effect');
-            setTimeout(function()
-            {
-                $("#login_form").addClass('shake_effect')
-            },1);
+            alert("error:" + res)
         }
+        // error:function (res) {
+        //     // alert(res)
+        //     $("#login_form").removeClass('shake_effect');
+        //     setTimeout(function()
+        //     {
+        //         $("#login_form").addClass('shake_effect')
+        //     },1);
+        // }
     })
-
-    // if(name=="www.htmleaf.com" && pass=="www.htmleaf.com"){
-    //     alert("登录成功！");
-    //     $("#user_name").val("");
-    //     $("#password").val("");
-    // }
-    // else{
-    //     $("#login_form").removeClass('shake_effect');
-    //     setTimeout(function()
-    //     {
-    //         $("#login_form").addClass('shake_effect')
-    //     },1);
-    // }
 }
 function check_register(){
     var name = $("#r_user_name").val();
     var pass = $("#r_password").val();
     var email = $("#r_email").val();
     var registerData = {"username":name,"password":pass,"email":email}
-    // JSON.stringify({"username":name,"password":pass,"email":email})
-    // $.post("/register",JSON.stringify(registerData),function (data, state) {
-    //     alert(data)
-    //     alert(state)
-    // },"JSON") // 发送post请求
     $.ajax({
         type:"POST",
         url:"/register",
         contentType:"application/json;charset=utf-8",
-        data:JSON.stringify(registerData)
+        data:JSON.stringify(registerData),
+        success:function (data) {
+            if (data == '0'){
+                alert("注册成功")
+            }else if (data == '-1'){
+                alert("用户名已存在")
+            }else if (data == '-2'){
+                alert("邮箱已被注册")
+            }
+        },
+        error:function (data) {
+            alert("error:" + data);
+        }
     })
-    alert("已发送post请求")
 
-    if(name!="" && pass=="" && email != "")
-    {
-        alert("注册成功！");
-        $("#user_name").val("");
-        $("#password").val("");
-    }
-    else
-    {
-        $("#login_form").removeClass('shake_effect');
-        setTimeout(function()
-        {
-            $("#login_form").addClass('shake_effect')
-        },1);
-    }
+    // if(name!="" && pass=="" && email != "")
+    // {
+    //     alert("注册成功！");
+    //     $("#user_name").val("");
+    //     $("#password").val("");
+    // }
+    // else
+    // {
+    //     $("#login_form").removeClass('shake_effect');
+    //     setTimeout(function()
+    //     {
+    //         $("#login_form").addClass('shake_effect')
+    //     },1);
+    // }
 }
 
 $(function(){

@@ -107,12 +107,12 @@
                         <li class="active"><a href="/">首页</a></li>
                         <li><a href="shop.html">我的数据</a></li>
                         <li><a href="/">数据分析</a></li>
-                        <!--<li><a href="/">注册/登录</a></li>-->
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <p th:text="#{index.testzq}"></p>
-                        <li th:utext="#{index.welcome(${username})}">欢迎您,用户姓名</li>
-                        <li><a href="login.html">注册/登录</a></li>
+                        <li th:utext="#{index.welcome(${username})}" th:if="${username}">欢迎您,用户姓名</li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="login.html" th:unless="${username}">注册/登录</a></li>
                     </ul>
                 </div>  
             </div>

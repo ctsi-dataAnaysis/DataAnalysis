@@ -25,23 +25,23 @@ public class RegisterController {
      */
     @PostMapping
     @ResponseBody
-    public int registerPost1(@RequestBody RegisterData registerData){
+    public String registerPost1(@RequestBody RegisterData registerData){
         System.out.println("注册信息：" + registerData);
         String message;
         if (userService.isUserExist(registerData.getUsername())){
             message = "用户名已存在";
             System.out.println(message);
-            return -1;
+            return "-1";
         }
         if (userService.isEmailExist(registerData.getEmail())){
             message = "邮箱已被注册";
             System.out.println(message);
-            return -2;
+            return "-2";
         }
         userService.save(new User(registerData));
         message = "用户创建成功";
         System.out.println(message);
-        return 0;
+        return "0";
     }
 
 }
