@@ -53,10 +53,6 @@ public class UserService {
             return false;
         }
         User user = userRepository.findByUsername(username);
-        System.out.println(user);
-        System.out.println(user.getPassword());
-        System.out.println(password);
-        System.out.println(user.getPassword() == password);
 
         if (!user.getPassword().equals(password)){
             System.out.println("密码错误,user.getPassword():" + user.getPassword() + ",loginData.getPassword():" + password);

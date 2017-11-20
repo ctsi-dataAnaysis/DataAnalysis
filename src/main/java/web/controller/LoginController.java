@@ -4,6 +4,7 @@ import business.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import web.requestdata.LoginData;
 
@@ -13,15 +14,11 @@ import web.requestdata.LoginData;
  * 登录页
  */
 @Controller
+//@SessionAttributes("username")
 @RequestMapping(value = "/login")
 public class LoginController {
     @Autowired
     private UserService userService;
-
-//    @ModelAttribute("username")
-//    public String username(){return }
-
-    private String message;//返回给model的提示信息
 
     @GetMapping
     public String getLogin(){
@@ -31,19 +28,23 @@ public class LoginController {
     /**
      * 接收login请求
      * @param loginData
-     * @return {登录成功界面} 如果用户名和密码验证通过;{login页面} 否则。
+     * @return {0} 如果用户名和密码验证通过;{-1} 用户名不存在;{-2}密码不正确
      */
     @PostMapping
-//    @ResponseBody
-    public String login(@RequestBody LoginData loginData, Model model){
+    @ResponseBody
+    public int login(@RequestBody LoginData loginData, Model model){
         System.out.println(loginData);
+        if (!userService.isUserExist(loginData.getUsername())){
+            return -1;//用户名不存在
+        }
         if (userService.isUserValid(loginData.getUsername(), loginData.getPassword())){
             System.out.println("用户有效");
             model.addAttribute("username",loginData.getUsername());//设定属性
-            return "index";
+//            username = loginData.getUsername();
+            return 0;//用户有效
         }
         System.out.println("用户无效");
-        return "login";
+        return -2;//密码与用户名不匹配
     }
 
 }

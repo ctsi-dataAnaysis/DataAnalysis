@@ -9,11 +9,11 @@ function check_login(){
         contentType:"application/json;charset=utf-8",
         data:JSON.stringify(loginData),
         success:function (res) {
-            // alert(res);
+            alert(res);
 
         },
         error:function (res) {
-            // alert(res)
+            alert(res)
             $("#login_form").removeClass('shake_effect');
             setTimeout(function()
             {
