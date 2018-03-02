@@ -1,9 +1,9 @@
-#概述
+# 概述
 1.本工程采用spring+spring MVC+spring data jpa的架构
 2.本工程采用thymeleaf作为模板引擎
-3.本工程采用logback日志框架
-###【注意事项】
-####1.日志记录
+3.本工程采用logback日志框架``````````
+### 【注意事项】
+#### 1.日志记录
     (0)logback日志框架在工程启动时会自动检测logback配置文件，默认目录是src/resources/;
     先检索logback-test.xml文件，如果不存在则检索logback.xml文件;
     当logback-test.xml和logback.xml文件都存在时，logback-test.xml文件为有效配置文件;
