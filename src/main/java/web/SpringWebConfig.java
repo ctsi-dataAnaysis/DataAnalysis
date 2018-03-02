@@ -14,6 +14,7 @@ import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.thymeleaf.messageresolver.StandardMessageResolver;
 import org.thymeleaf.spring4.SpringTemplateEngine;
@@ -45,6 +46,13 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter implements Applicat
     public void extendMessageConverters(List<HttpMessageConverter<?>> converters){
         converters.add(new MappingJackson2HttpMessageConverter());
     }
+
+//    @Override
+//    public void addResourceHandlers(ResourceHandlerRegistry registry){
+//        registry.addResourceHandler("/js/**").addResourceLocations("/js");
+//        registry.addResourceHandler("/bootstrap/**").addResourceLocations("/bootstrap");
+//        registry.addResourceHandler("/css/**").addResourceLocations("/css");
+//    }
 
 
     /*
