@@ -19,6 +19,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
+import java.util.List;
 
 /**
  * Created by Zhao Qing on 2017/11/14.
@@ -44,9 +45,9 @@ public class SpringBusinessConfig {
     @Bean
     public DataSource dataSource() {
 //        return new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2).build();
-        url = "jdbc:mysql://123.206.49.57:3306/dataAnalysis?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true";
+        url = "jdbc:mysql://192.9.99.150:3306/ctsida?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true";
         username = "root";
-        password = "root1234";
+        password = "1234";
         driver = "com.mysql.jdbc.Driver";
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(driver);

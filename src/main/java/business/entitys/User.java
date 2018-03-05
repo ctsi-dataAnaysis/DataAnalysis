@@ -27,7 +27,7 @@ public class User {
 
     private String email;//用户邮箱
 
-    private String createTime = TimeUtil.nowTime();//用户创建时间
+    private String createTime;//用户创建时间
 
     public User(){
     }
@@ -37,6 +37,7 @@ public class User {
         this.username = registerData.getUsername();
         this.password = registerData.getPassword();
         this.email = registerData.getEmail();
+        this.createTime = TimeUtil.nowTime();
     }
 
     public User(String username, String password, String email,String createTime){
