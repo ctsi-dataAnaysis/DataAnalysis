@@ -1,13 +1,19 @@
 package web.controller;
 
 import business.service.UserService;
+import com.sun.deploy.net.HttpResponse;
+import jdk.nashorn.internal.ir.RuntimeNode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import web.requestdata.LoginData;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 
 /**
@@ -35,14 +41,16 @@ public class LoginController {
      */
     @PostMapping
     @ResponseBody
-    public String login(@RequestBody LoginData loginData, Model model){
+    public String login(@RequestBody LoginData loginData, Model model, HttpServletRequest request){
         LOGGER.debug("{}", loginData);
         if (!userService.isUserExist(loginData.getUsername())){
             return "-1";//用户名不存在
         }
         if (userService.isUserValid(loginData.getUsername(), loginData.getPassword())){
             System.out.println("用户有效");
-            model.addAttribute("username",loginData.getUsername());//设定属性
+            HttpSession session = request.getSession(true);//创建一个session
+            session.setAttribute("username", loginData.getUsername());//设置username
+//            model.addAttribute("username",loginData.getUsername());//设定属性
             return "0";//用户有效
         }
         System.out.println("用户无效");
