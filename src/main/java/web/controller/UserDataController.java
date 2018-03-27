@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -20,9 +21,10 @@ public class UserDataController {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserDataController.class);
 
     @GetMapping
-    public String getUserData(HttpServletRequest request, Model model){
+    public String getUserData(HttpServletRequest request, Model model, HttpServletResponse response){
         HttpSession session = request.getSession();
         if(!session.isNew()){model.addAttribute("username", session.getAttribute("username"));}
+        response.setHeader("Cache-Control", "no-cache");
         return "userdata";
     }
 
