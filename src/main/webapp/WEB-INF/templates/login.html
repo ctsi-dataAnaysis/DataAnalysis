@@ -1,10 +1,33 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="/css/login.css">
+        <style>
+            body, html {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+
+                margin: 0;
+                padding: 0;
+            }
+            #background {
+                position: fixed;
+                top: 0;
+                left: 0;
+
+                z-index: -100;
+            }
+        </style>
+
 </head>
 <body>
+<canvas id="background"></canvas>
+<script async type="text/javascript" src="/public/background.js"></script>
 <div id="wrapper" class="login-page">
     <div id="login_form" class="form">
         <form id="register-form" class="register-form">

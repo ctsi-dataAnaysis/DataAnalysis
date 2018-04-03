@@ -4,6 +4,7 @@ import web.SpringWebConfig;
 
 /**
  * Created by Zhao Qing on 2017/11/14.
+ * 初始化
  */
 public class ApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     protected Class<?>[] getRootConfigClasses() {

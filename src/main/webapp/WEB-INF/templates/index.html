@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,12 +20,38 @@
       <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-  </head>
+    <style>
+      body, html {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
 
-  <body>
+        margin: 0;
+        padding: 0;
+      }
+      #background {
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        z-index: -100;
+      }
+      #Snow {
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        z-index: -50;
+      }
+    </style>
+  </head>
+<!--<body>-->
+  <body background="/public/background.jpg">
 
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top" th:fragment="navbar">
+    <nav class="navbar navbar-default{background-color:#C1E2B3;} navbar-fixed-top" th:fragment="navbar">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -33,15 +60,17 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Datalysis</a>
+          <a class="navbar-brand" href="#"style="color:red">Datalysis</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
+
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">首页</a></li>
-            <li><a href="/userdata">我的数据</a></li>
-            <li><a href="/dataAnalysis">数据分析</a></li>
+
+            <li class="active"><a href="#"style="color:orange">首页</a></li>
+              <li><a href="/userdata" style="color:yellow">我的数据</a></li>
+            <li><a href="/dataAnalysis"style="color:greenyellow">数据分析</a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"style="color:green">Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="#">Action</a></li>
                 <li><a href="#">Another action</a></li>
@@ -54,18 +83,29 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#" th:utext="#{index.welcome(${username})}" th:if="${username}">欢迎信息</a></li>
-            <li><a href="/login" th:unless="${username}">注册/登录</a></li>
+            <li><a href="#" th:utext="#{index.welcome(${username})}" th:if="${username}"style="color:orange">欢迎信息</a></li>
+            <li><a href="/login" th:unless="${username}"style="color:orange">注册/登录</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
-    <h1>DataAnalysis平台简介...</h1>
-    <h1>DataAnalysis平台简介...</h1>
-    <h1>DataAnalysis平台简介...</h1>
-    <h1>DataAnalysis平台简介...</h1>
+    <!--<br><br>-->
+<!--    <div class="container-fluid">
+      <div class="jumbotron">-->
 
+<!--
+      </div>
+    </div>
+-->
+    <div class="Snow">
+      <canvas width="1684" height="477" id="Snow"></canvas>
+      <div align="center" style="padding-top: 9em">
+        <h1><span style="font-size: 2em;color:yellow">欢迎使用DataAnalysis平台</span></h1>
+        <!-- <span style="color:greenyellow"><a href="/login">注册/登录</a></span>-->
+      </div>
+    </div>
+    <script src="/public/snow.js"></script>
     <!--js文件-->
     <script src="/js/jquery-2.1.1.min.js"></script>
     <script src="/bootstrap/js/bootstrap.min.js"></script>

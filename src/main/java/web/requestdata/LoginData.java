@@ -2,6 +2,7 @@ package web.requestdata;
 
 /**
  * Created by Zhao Qing on 2017/11/17.
+ * 获取用户信息
  */
 public class LoginData {
     private String username;

@@ -1,0 +1,10 @@
+CREATE TABLE file_information(
+  id int UNSIGNED NOT NULL AUTO_INCREMENT,
+  filename VARCHAR(255) NOT NULL,
+  filetype VARCHAR(100) NOT NULL,
+  upload_time DATETIME NOT NULL,
+  username VARCHAR(255) NOT NULL,
+  sign VARCHAR (20) NOT NULL,
+  PRIMARY KEY(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
