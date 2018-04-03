@@ -2,7 +2,11 @@ package web.requestdata;
 
 /**
  * Created by Zhao Qing on 2017/11/15.
+<<<<<<< HEAD
  * 获得用户注册信息
+=======
+ * 用户注册信息
+>>>>>>> 36eddb16c41b3c4c9420f4ffaf4edfba339b4949
  */
 public class RegisterData {
     private String username;

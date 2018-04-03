@@ -19,6 +19,10 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
+<<<<<<< HEAD
+=======
+import java.util.List;
+>>>>>>> 36eddb16c41b3c4c9420f4ffaf4edfba339b4949
 
 /**
  * Created by Zhao Qing on 2017/11/14.
@@ -42,15 +46,21 @@ public class SpringBusinessConfig {
 
     //数据库种类
     @Bean
+<<<<<<< HEAD
     //通过datasource得到数据库connection
+=======
+>>>>>>> 36eddb16c41b3c4c9420f4ffaf4edfba339b4949
     public DataSource dataSource() {
 //        return new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2).build();
         url = "jdbc:mysql://192.9.99.150:3306/ctsida?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true";
         username = "root";
         password = "1234";
         driver = "com.mysql.jdbc.Driver";
+<<<<<<< HEAD
 
         //DriverManagerDataSource只要有连接就建立一个connection，没有连接池的作用
+=======
+>>>>>>> 36eddb16c41b3c4c9420f4ffaf4edfba339b4949
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(driver);
         dataSource.setUrl(url);
@@ -60,21 +70,33 @@ public class SpringBusinessConfig {
     }
 
     @Bean
+<<<<<<< HEAD
     //通过JdbcTemplate实现查询操作，DataSource --> JdbcTemplate --> Dao --> Service --> Action/Servlet ？？？？
+=======
+>>>>>>> 36eddb16c41b3c4c9420f4ffaf4edfba339b4949
     public JdbcTemplate setupjdbcTemplate() throws Exception{
         return new JdbcTemplate(dataSource());
     }
 
     @Bean
+<<<<<<< HEAD
     //JpaTransactionManager事务管理器，支持各种数据访问框架的管理
+=======
+>>>>>>> 36eddb16c41b3c4c9420f4ffaf4edfba339b4949
     public JpaTransactionManager transactionManager(EntityManagerFactory emf) {
         return new JpaTransactionManager(emf);
     }
 
+<<<<<<< HEAD
     //jpa适配器
     @Bean
     //JpaVendorAdapter设置jpa实现厂商的特定属性，
     // HibernateJpaVendorAdapter，OpenJpaVendorAdapter，EclipseJpaVendorAdapter，TopLinkJpaVenderAdapter
+=======
+
+    //jpa适配器
+    @Bean
+>>>>>>> 36eddb16c41b3c4c9420f4ffaf4edfba339b4949
     public JpaVendorAdapter jpaVendorAdapter() {
         HibernateJpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
 //        jpaVendorAdapter.setDatabase(Database.H2);
@@ -85,8 +107,12 @@ public class SpringBusinessConfig {
         return jpaVendorAdapter;
     }
 
+<<<<<<< HEAD
     //表示层(struts)、业务层(spring)、持久层(hibernate)
     // 配置容器管理类型的JPA（Java持久层API）
+=======
+    //配置容器管理类型的JPA
+>>>>>>> 36eddb16c41b3c4c9420f4ffaf4edfba339b4949
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean lemfb = new LocalContainerEntityManagerFactoryBean();

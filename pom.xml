@@ -54,6 +54,7 @@
             <version>5.0.12.Final</version>
         </dependency>
 
+<<<<<<< HEAD
         <!--文件上传-->
         <dependency>
             <groupId>commons-io</groupId>
@@ -77,6 +78,8 @@
         </dependency>
 
 
+=======
+>>>>>>> 36eddb16c41b3c4c9420f4ffaf4edfba339b4949
         <!--mysql连接器-->
         <dependency>
             <groupId>mysql</groupId>

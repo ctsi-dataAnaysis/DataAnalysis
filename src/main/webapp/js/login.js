@@ -11,7 +11,10 @@ function check_login(){
         success:function (data) {
             if (data == '0'){
                 window.location.href = "/user/" + username;
+<<<<<<< HEAD
                 // window.location.href = "/user/" + username;
+=======
+>>>>>>> 36eddb16c41b3c4c9420f4ffaf4edfba339b4949
                 alert("欢迎使用CTSI数据分析平台");
             }else if (data == '-1'){
                 alert("用户不存在")

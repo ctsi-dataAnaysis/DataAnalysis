@@ -3,6 +3,7 @@ package web;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+<<<<<<< HEAD
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -11,16 +12,35 @@ import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+=======
+import org.springframework.context.MessageSource;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.MessageSourceResourceBundle;
+import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+>>>>>>> 36eddb16c41b3c4c9420f4ffaf4edfba339b4949
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+<<<<<<< HEAD
+=======
+import org.thymeleaf.messageresolver.StandardMessageResolver;
+>>>>>>> 36eddb16c41b3c4c9420f4ffaf4edfba339b4949
 import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
 
+<<<<<<< HEAD
 import java.io.IOException;
+=======
+import java.util.Arrays;
+>>>>>>> 36eddb16c41b3c4c9420f4ffaf4edfba339b4949
 import java.util.List;
 
 /**
@@ -39,13 +59,20 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter implements Applicat
         this.applicationContext = applicationContext;
     }
 
+<<<<<<< HEAD
     //添加MappingJackson2HttpMessageConverter，用@RequestBody注解将一个json数据转化为一个具体的Object
+=======
+    //添加MappingJackson2HttpMessageConverter，用于@RequestBody注解将一个json数据转化为一个具体的Object
+>>>>>>> 36eddb16c41b3c4c9420f4ffaf4edfba339b4949
     @Override
     public void extendMessageConverters(List<HttpMessageConverter<?>> converters){
         converters.add(new MappingJackson2HttpMessageConverter());
     }
 
+<<<<<<< HEAD
         //添加映射路径
+=======
+>>>>>>> 36eddb16c41b3c4c9420f4ffaf4edfba339b4949
 //    @Override
 //    public void addResourceHandlers(ResourceHandlerRegistry registry){
 //        registry.addResourceHandler("/js/**").addResourceLocations("/js");
@@ -112,6 +139,7 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter implements Applicat
     }
 
 
+<<<<<<< HEAD
     //文件上传必备配置
     @Bean(name = "multipartResolver")
     public MultipartResolver multipartResolver() throws IOException {
@@ -127,4 +155,6 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter implements Applicat
         registry.addResourceHandler("/static/**").addResourceLocations("/static/");
     }
 
+=======
+>>>>>>> 36eddb16c41b3c4c9420f4ffaf4edfba339b4949
 }

@@ -58,10 +58,21 @@
               </ul>
             </li>
           </ul>
+<<<<<<< HEAD
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#" th:utext="#{index.welcome(${username})}" th:if="${username}">欢迎信息</a></li>
             <li><a href="/login" th:unless="${username}">注册/登录</a></li>
           </ul>
+=======
+          <!--?<ul class="nav navbar-nav navbar-right">-->
+            <!--?<li><a href="#" th:text="${username}}">欢迎信息</a></li>-->
+            <!--?<li><a href="/login">注册/登录</a></li>-->
+          <!--?</ul>-->
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#" th:utext="#{index.welcome(${username})}" th:if="${username}">欢迎信息</a></li>
+                <li><a href="/login" th:unless="${username}">注册/登录</a></li>
+            </ul>
+>>>>>>> 36eddb16c41b3c4c9420f4ffaf4edfba339b4949
         </div><!--/.nav-collapse -->
       </div>
     </nav>

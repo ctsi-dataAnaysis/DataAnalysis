@@ -39,7 +39,10 @@ public class RegisterController {
             LOGGER.debug("邮箱已被注册");
             return "-2";
         }
+<<<<<<< HEAD
         //创建新用户
+=======
+>>>>>>> 36eddb16c41b3c4c9420f4ffaf4edfba339b4949
         userService.save(new User(registerData));
         LOGGER.debug("用户创建成功");
         return "0";

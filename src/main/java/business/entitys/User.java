@@ -11,6 +11,7 @@ import javax.persistence.Table;
 
 /**
  * Created by Zhao Qing on 2017/11/15.
+<<<<<<< HEAD
  * 对应数据库中的user表，获取user的相关数据
  */
 
@@ -19,6 +20,15 @@ import javax.persistence.Table;
 public class User {
 
     @GeneratedValue    //标注主键的生成策略
+=======
+ * 对应数据库中的user表
+ */
+@Entity
+@Table(name = "user")
+public class User {
+
+    @GeneratedValue
+>>>>>>> 36eddb16c41b3c4c9420f4ffaf4edfba339b4949
     @Id
     private Integer id;//主键，自增
 
@@ -28,15 +38,28 @@ public class User {
 
     private String email;//用户邮箱
 
+<<<<<<< HEAD
     private String createTime = TimeUtil.nowTime();//用户创建时间
 
     public User(){}
 
     //利用RegisterData来构造User对象，根据用户注册信息构造User对象
+=======
+    private String createTime;//用户创建时间
+
+    public User(){
+    }
+
+    //利用RegisterData来构造User对象
+>>>>>>> 36eddb16c41b3c4c9420f4ffaf4edfba339b4949
     public User(RegisterData registerData){
         this.username = registerData.getUsername();
         this.password = registerData.getPassword();
         this.email = registerData.getEmail();
+<<<<<<< HEAD
+=======
+        this.createTime = TimeUtil.nowTime();
+>>>>>>> 36eddb16c41b3c4c9420f4ffaf4edfba339b4949
     }
 
     public User(String username, String password, String email,String createTime){

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<<<<<<< HEAD
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -116,6 +117,123 @@
 							<a href="#" aria-label="Previous">
 								<span aria-hidden="true">&laquo;</span>
 							</a>
+=======
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Datalysis</title>
+
+    <!-- Bootstrap core CSS -->
+	<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="./index.html">Datalysis</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/">首页</a></li>
+            <li class="active"><a href="#">我的数据</a></li>
+            <li><a href="/dataAnalysis">数据分析</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+          <!--?<ul class="nav navbar-nav navbar-right">-->
+            <!--?<li><a href="#">欢迎信息</a></li>-->
+            <!--?<li><a href="/login">注册/登录</a></li>-->
+          <!--?</ul>-->
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#" th:utext="#{index.welcome(${username})}" th:if="${username}">欢迎信息</a></li>
+                <li><a href="/login" th:unless="${username}">注册/登录</a></li>
+                <li><a href="/quit" th:if="${username}">退出登录</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+	
+	<div class="container-fluid">
+		<div class="jumbotron">
+		
+			<div class="row page-header">
+				<div class="col-md-1">
+					<strong class="text-left">数据源</strong>
+				</div>
+				<div class="col-md-1">
+					<button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#addFile">
+						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span><!-- 添加文件图标 --> 
+					</button>
+				</div>
+			</div><!-- row -->
+			<div class="row">
+				<table class="table table-hover text-center">
+					<thead>
+						<tr class="info">
+							<th class="text-center">序号</th>
+							<th class="text-center">名称</th>
+							<th class="text-center">类型</th>
+							<th class="text-center">上传时间</th>
+							<th class="text-center">操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="active">
+							<td>1</td>
+							<td>test</td>
+							<td>excel</td>
+							<td>2017-11-21 14:57:34</td>
+							<td>
+								<button type="button" class="btn btn-info">查看</button>
+								<button type="button" class="btn btn-danger">删除</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div><!-- row -->
+			<div class="row">
+				<div class="col-md-3">
+					<small>共5页</small>
+				</div>
+				<div class="col-md-6">
+					<nav aria-label="Page navigation">
+						<ul class="pagination">
+						<li>
+						  <a href="#" aria-label="Previous">
+							<span aria-hidden="true">&laquo;</span>
+						  </a>
+>>>>>>> 36eddb16c41b3c4c9420f4ffaf4edfba339b4949
 						</li>
 						<li><a href="#">1</a></li>
 						<li><a href="#">2</a></li>
@@ -123,6 +241,7 @@
 						<li><a href="#">4</a></li>
 						<li><a href="#">5</a></li>
 						<li>
+<<<<<<< HEAD
 							<a href="#" aria-label="Next">
 								<span aria-hidden="true">&raquo;</span>
 							</a>
@@ -176,4 +295,58 @@
 <script src="/js/delete.js"></script>
 <script src="/js/sign.js"></script>
 </body>
+=======
+						  <a href="#" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+						  </a>
+						</li>
+						</ul>
+					</nav>
+				</div>
+			<div><!-- row -->
+		  
+		</div><!-- jumbotron -->
+    </div> <!-- /container -->
+	
+	<!-- 用于添加文件的模态窗口 -->
+	<div class="modal fade" id="addFile" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">文件添加</h4>
+			  </div>
+			  <div class="modal-body">
+				<p>说明信息...（上传注意事项等，后续补充）</p>
+				<form role="form">
+				  <div class="form-group">
+					<label for="inputfile">请选择上传文件</label>
+					<input type="file" id="inputfile"></input>
+				  </div>
+				  <div class="form-group">
+					<label for="name">请选择列分隔符</label>
+					<select class="form-control">
+						<option>逗号(,)</option>
+						<option>分号(;)</option>
+						<option>空格</option>
+					</select>
+				  </div>
+				</form>
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				<button type="button" class="btn btn-info">上传</button>
+			  </div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- modal fade-->
+		</div>
+	</div>
+
+	<!--js文件-->
+	<script src="/js/jquery-2.1.1.min.js"></script>
+	<script src="/bootstrap/js/bootstrap.min.js"></script>
+
+  </body>
+>>>>>>> 36eddb16c41b3c4c9420f4ffaf4edfba339b4949
 </html>

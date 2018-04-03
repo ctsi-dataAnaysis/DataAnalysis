@@ -8,7 +8,10 @@ import org.springframework.stereotype.Service;
 /**
  * Created by Zhao Qing on 2017/11/15.
  * 通过dao层来提供对user表的各种操作
+<<<<<<< HEAD
  * 用户登陆时的各种状态，用户名是否存在、邮箱是否被注册、密码是否正确等
+=======
+>>>>>>> 36eddb16c41b3c4c9420f4ffaf4edfba339b4949
  */
 @Service("userService")
 public class UserService {
@@ -56,7 +59,10 @@ public class UserService {
         User user = userRepository.findByUsername(username);
 
         if (!user.getPassword().equals(password)){
+<<<<<<< HEAD
             System.out.println(user);
+=======
+>>>>>>> 36eddb16c41b3c4c9420f4ffaf4edfba339b4949
             System.out.println("密码错误,user.getPassword():" + user.getPassword() + ",loginData.getPassword():" + password);
             return false;
         }
