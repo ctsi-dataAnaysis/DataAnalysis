@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Datalysis</title>
+
+    <!-- Bootstrap core CSS -->
+	<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- JQuery-UI -->
+	<script src="/js/JQuery-ui/jquery.min.js"></script>
+	<script src="/js/JQuery-ui/jquery-1.9.1.js"></script>
+	<script src="/js/JQuery-ui/jquery-ui.js"></script>
+
+
+	  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top" th:fragment="navbar">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="./index.html">Datalysis</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/">首页</a></li>
+            <li><a href="/userdata">我的数据</a></li>
+            <li class="active"><a href="#">数据分析</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#" th:utext="#{index.welcome(${username})}" th:if="${username}">欢迎信息</a></li>
+            <li><a href="/login" th:unless="${username}">注册/登录</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+	
+	<div class="container-fluid">
+		<div class="jumbotron">
+			<div class="row page-header">
+				<strong class="text-left">数据分析</strong>
+			</div><!-- row -->
+					
+			<div class="row">
+				<div class="col-md-3 col-lg-3">
+					<strong>数据源</strong>
+					<ul class="list-group" style="border: 1px solid rgb(204, 204, 204); overflow-y: scroll; height: 335px;">
+						<li id="file1" class="list-group-item">2017年7月用户数据.excel</li>
+						<li id="file2" class="list-group-item">2017年8月用户数据.excel</li>
+					</ul>
+				</div><!-- col-md-3 -->
+				<div class="col-md-3 col-lg-3" id="col">
+					<strong>训练表</strong>
+					<button type="button" class="glyphicon glyphicon-trash" aria-hidden="true" style="float:right"></button>
+					<ul class="list-group" id="fileColumns" style="border: 1px solid rgb(204, 204, 204); overflow-y: scroll; height: 335px;">
+						<li class="list-group-item"></li>
+						<li class="list-group-item"></li>
+					</ul>	
+				</div><!-- col-md-2 -->
+				<div class="col-md-6 col-lg-6">
+					<strong>X轴</strong>
+					<button type="button" class="glyphicon glyphicon-trash" aria-hidden="true" style="float:right"></button>
+					<ul class="list-group" style="border: 1px solid rgb(204, 204, 204); overflow-y: scroll;height: 150px;">
+					</ul>
+					<strong>Y轴</strong>
+					<button type="button" class="glyphicon glyphicon-trash" aria-hidden="true" style="float:right"></button>
+					<ul class="list-group" style="border: 1px solid rgb(204, 204, 204); overflow-y: scroll;height: 150px;">
+					</ul>
+				</div><!-- col-md-4 -->
+			</div><!-- row -->
+			
+			<div class="row" style="border: 1px solid rgb(204, 204, 204); overflow-y: scroll;overflow-x: scroll;height: 150px;">
+				<table class="table table-hover text-center">
+					<thead>
+						<tr class="info">
+							<th class="text-center">序号</th>
+							<th class="text-center">列名1</th>
+						</tr>
+					</thead>
+				<tbody>
+						<tr class="active">
+							<td>1</td>
+							<td>test</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>test2</td>
+						</tr>
+				</tbody>
+				</table>
+			</div>
+		</div><!-- jumbotron -->
+	</div><!-- container-fluid -->
+
+	<script>
+		$("#file1").draggable({ helper: "clone" });
+		$("#file2").draggable({ helper: "clone" });
+		$("#fileColumns").droppable({
+			drop: function() {
+				alert("拖放成功");
+			}
+		});
+	</script>
+
+
+
+	<!--js文件-->
+	<!--JQuery-->
+	<script src="/js/jquery-2.1.1.min.js"></script>
+	<!--bootstrap-->
+	<script src="/bootstrap/js/bootstrap.min.js"></script>
+
+	
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!--<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>-->
+    <!--<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>-->
+    <!--<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!--<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>-->
+  </body>
+</html>
