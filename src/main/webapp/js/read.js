@@ -3,6 +3,7 @@ function read(btn){
     //获取td内容
     var tds = btn.parentElement.parentElement.children;
     var td = (tds[2]).innerHTML ;
+    // var username = (tds[])
 
 
     alert("测试是否获取到本行第一个表格的值: " + td);
@@ -17,6 +18,6 @@ function read(btn){
         }
     });
 
-    window.open("/userdata/read/file");
+    window.open("/static/a/"+td);
 
 }

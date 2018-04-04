@@ -99,7 +99,9 @@
 					<td th:text="${obj.getFiletype()}"></td>
 					<td th:text="${obj.getUpload_time()}"></td>
 					<td>
-						<button type="button" id="readfile" name="btn" class="btn btn-info" onclick="read(this)">查看</button>
+                        <a th:href="@{'/static/'+${obj.getUsername()}+'/'+${obj.getFilename()}}" target="_blank">
+                            <button type="button" id="readfile" name="btn" class="btn btn-info" onclick="read(this)">查看</button>
+                        </a>
 					</td>
 				</tr>
 				</tbody>
@@ -175,6 +177,6 @@
 <script src="/bootstrap/js/bootstrap.min.js"></script>
 <script src="/js/delete.js"></script>
 <script src="/js/sign.js"></script>
-<script src="/js/read.js"></script>
+<!--<script src="/js/read.js"></script>-->
 </body>
 </html>
