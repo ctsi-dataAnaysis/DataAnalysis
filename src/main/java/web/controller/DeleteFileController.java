@@ -34,8 +34,6 @@ public class DeleteFileController {
     @Autowired
     private DeleteRepository deleteRepository;
 
-    //    @ResponseBody
-/*    @RequestMapping(value = "/delete")*/
     @Autowired
     FileRepository fileRepository;
     @GetMapping
