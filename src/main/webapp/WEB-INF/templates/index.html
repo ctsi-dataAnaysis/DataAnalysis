@@ -51,8 +51,11 @@
     </style>
   </head>
 <!--<body>-->
-  <body background="/public/background.jpg">
 
+  <body background="/public/background.jpg">
+  <!--<video width="320" height="240" controls="controls">
+    <source src="/public/video/Wildlife.mp4" type="video/mp4">
+  </video>-->
     <!-- Fixed navbar -->
     <nav class="navbar navbar-default{background-color:#C1E2B3;} navbar-fixed-top" th:fragment="navbar">
       <div class="container">
@@ -105,6 +108,9 @@
       <canvas width="1684" height="477" id="Snow"></canvas>
       <div align="center" style="padding-top: 9em">
         <h1><span style="font-size: 2em;color:yellow">欢迎使用DataAnalysis平台</span></h1>
+        <video width="320" height="240" controls="controls">
+          <source src="/public/video/movie.ogg" type="video/ogg">
+        </video>
         <!-- <span style="color:greenyellow"><a href="/login">注册/登录</a></span>-->
       </div>
     </div>
