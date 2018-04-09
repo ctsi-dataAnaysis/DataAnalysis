@@ -23,8 +23,11 @@ import java.util.Map;
 /**
  * Created by Zhao Qing on 2017/11/28.
  * "我的数据"页面
- * edit by Wu Zhitao, Tianyi Xia 2018/3/30
+ * edited by Wu Zhitao, Tianyi Xia 2018/3/30
  * 添加文件上传并回显功能
+ * 添加文件删除功能
+ * 添加文件查看功能
+ * 添加翻页功能
  */
 @Controller
 @RequestMapping(value = "/userdata")
@@ -45,8 +48,8 @@ public class UserDataController {
 
         String username = "" + httpSession.getAttribute("username");
 
+        //查找数据库全部元素
         List<FileUpload> list = fileRepository.findAll();
-
         for (int i = 0;i < list.size();i++){
             if (!list.get(i).getUsername().equals(username)){
                 FileUpload item = list.get(i);
@@ -54,10 +57,10 @@ public class UserDataController {
                 i -= 1;
             }
         }
+
+        //记录总页数，每8条数据为一页
         totalPage = (int) Math.ceil((double) list.size()/8);
-
         List<Object> pageData = new ArrayList<Object>();
-
         if (list.size()<8){
             for (int j = 0; j < list.size(); j++){
                 pageData.add(list.get(j));
@@ -88,7 +91,6 @@ public class UserDataController {
 //        System.out.println("第" + pageIndex + "页");
 
         List<FileUpload> list = fileRepository.findAll();
-
         for (int i = 0; i < list.size();i++){
             if (!list.get(i).getUsername().equals(username)){
                 FileUpload item = list.get(i);
@@ -98,7 +100,6 @@ public class UserDataController {
         }
 
         List<Object> pageData = new ArrayList<Object>();
-
         if (list.size()<8){
             for (int j = 0; j < list.size(); j++){
                 pageData.add(list.get(j));
@@ -120,7 +121,6 @@ public class UserDataController {
         model.addAttribute("currentPage",pageIndex);
         model.addAttribute("previousPage",pageIndex-1);
         model.addAttribute("nextPage",pageIndex+1);
-//        request.setAttribute("imagesPath",path);
         return "userdata";
     }
 }

@@ -3,15 +3,10 @@ package business.service;
 
 import business.dao.FileRepository;
 import business.entitys.FileUpload;
+import business.entitys.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import web.requestdata.FileData;
-
-import java.io.File;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Tianyi Xia on 2018/03/28.
@@ -24,7 +19,16 @@ public class FileService {
     @Autowired//自动注入
     private FileRepository fileRepository;
 
+  /*  public boolean isFileValid(String username, String filename){
+        FileUpload fileUpload = fileRepository.findByUsername(username);
 
+        if (fileUpload.getFilename().equals(filename)){
+            System.out.println(filename);
+            return false;
+        }
+        return true;
+    }
+*/
     /**
      * 保存一条file记录
      * @param fileUpload

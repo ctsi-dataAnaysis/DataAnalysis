@@ -29,16 +29,14 @@ import java.util.logging.Logger;
 @Controller
 @RequestMapping(value = "/delete",method = RequestMethod.POST)
 public class DeleteFileController {
-    @Autowired
-    private DeleteService deleteService;
+
     @Autowired
     private DeleteRepository deleteRepository;
 
     @Autowired
     FileRepository fileRepository;
     @GetMapping
-    public String deleteUser(HttpSession httpSession,
-                             Model model, HttpServletResponse response,HttpServletRequest request) {
+    public String deleteUser(HttpSession httpSession,HttpServletRequest request) {
 
 
 
@@ -58,6 +56,8 @@ public class DeleteFileController {
         //删除文件
         for (int i =0; i < strs.length; i++){
             String filename = strs[i];
+
+            //删除MySQL信息
             for (int j = 0;j < list.size();j++){
                 if (list.get(j).getUsername().equals(httpSession.getAttribute("username"))
                         && list.get(j).getFilename().equals(filename)){
@@ -66,7 +66,7 @@ public class DeleteFileController {
                 }
             }
 
-
+            //删除服务器文件
             File file = new File(pathRoot + "/" + filename);
             if (file.exists() && file.isFile()){
                 file.delete();

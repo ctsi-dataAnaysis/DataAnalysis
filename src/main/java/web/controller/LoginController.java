@@ -19,12 +19,11 @@ import javax.servlet.http.HttpSession;
  * 登录页
  */
 @Controller
-//@SessionAttributes("username")
 @RequestMapping(value = "/login")
 public class LoginController {
     private static final Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
 
-    @Autowired//不是很懂==
+    @Autowired
     private UserService userService;
 
     @GetMapping

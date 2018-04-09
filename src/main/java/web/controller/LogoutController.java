@@ -23,7 +23,6 @@ public class LogoutController {
     public String getLogout(HttpSession session, HttpServletRequest request, HttpServletResponse response){
 
         //清除session
-//        session.removeAttribute("username");
         session.invalidate();
 
         //清除cookie
