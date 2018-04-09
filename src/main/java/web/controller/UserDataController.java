@@ -67,7 +67,8 @@ public class UserDataController {
                 pageData.add(list.get(j));
             }
         }
-
+        int number = list.size();
+        model.addAttribute("totalfile",number);
         model.addAttribute("totalpage",totalPage);
         model.addAttribute("filelist",pageData);
         model.addAttribute("currentPage",1);
@@ -98,7 +99,8 @@ public class UserDataController {
         }
 
         List<Object> pageData = new ArrayList<Object>();
-
+        int number = list.size();
+        model.addAttribute("totalfile",number);
         if (list.size()<8){
             for (int j = 0; j < list.size(); j++){
                 pageData.add(list.get(j));
