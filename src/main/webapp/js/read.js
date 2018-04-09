@@ -8,7 +8,6 @@ function read(btn){
 
     alert("测试是否获取到本行第一个表格的值: " + td);
 
-
     $.ajax({
         data:{"filename":td},
         type:'post',

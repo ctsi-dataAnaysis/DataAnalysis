@@ -122,9 +122,9 @@
 								<span aria-hidden="true">&laquo;</span>
 							</a>
 						</li>
-							<li  th:each="i:${#numbers.sequence(1,totalpage)}">
+							<li th:each="i:${#numbers.sequence(1,totalpage)}">
 								<a th:if="${currentPage} == ${i}">
-									<strong th:text="${i}" style="color: red"></strong></a>
+									<strong th:text="${i}" style="font-weight: bold; color: red;"></strong></a>
 								<a th:href="'/userdata/page' + ${i}" th:if="${currentPage} != ${i}" th:text="${i}"></a>
 							</li>
 						<li>
