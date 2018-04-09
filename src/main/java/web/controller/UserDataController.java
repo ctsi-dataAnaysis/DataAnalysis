@@ -8,13 +8,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import web.requestdata.LoginData;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
@@ -33,14 +31,11 @@ import java.util.Map;
 public class UserDataController {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserDataController.class);
 
-
-    @Autowired
-    private FileService fileService;
+    private int totalPage;
 
     @Autowired
     private FileRepository fileRepository;
 
-//    @RequestMapping(value = "/getUserData")
     @GetMapping
     public String getUserData(HttpSession httpSession,
                               Model model, HttpServletResponse response){
@@ -54,23 +49,77 @@ public class UserDataController {
 
         for (int i = 0;i < list.size();i++){
             if (!list.get(i).getUsername().equals(username)){
-
                 FileUpload item = list.get(i);
-
-//                System.out.println(item);
-
                 list.remove(item);
-
-//                System.out.println(list);
-
                 i -= 1;
+            }
+        }
+        totalPage = (int) Math.ceil((double) list.size()/8);
 
+        List<Object> pageData = new ArrayList<Object>();
+
+        if (list.size()<8){
+            for (int j = 0; j < list.size(); j++){
+                pageData.add(list.get(j));
+            }
+        }else {
+            for (int j = 0; j < 8; j++){
+                pageData.add(list.get(j));
             }
         }
 
+        model.addAttribute("totalpage",totalPage);
+        model.addAttribute("filelist",pageData);
+        model.addAttribute("currentPage",1);
+        model.addAttribute("nextPage",2);
+//        request.setAttribute("imagesPath",path);
+        return "userdata";
+    }
 
-        model.addAttribute("filelist",list);
+    @RequestMapping(value = "/page{i}")
+    public String getPageData(@PathVariable(value = "i") int pageIndex,HttpSession session,
+                              Model model,HttpServletResponse response){
 
+        model.addAttribute("username",session.getAttribute("username"));
+        response.setHeader("Cache-Control", "no-cache, no-store");
+
+        String username = "" + session.getAttribute("username");
+
+//        System.out.println("第" + pageIndex + "页");
+
+        List<FileUpload> list = fileRepository.findAll();
+
+        for (int i = 0; i < list.size();i++){
+            if (!list.get(i).getUsername().equals(username)){
+                FileUpload item = list.get(i);
+                list.remove(item);
+                i -= 1;
+            }
+        }
+
+        List<Object> pageData = new ArrayList<Object>();
+
+        if (list.size()<8){
+            for (int j = 0; j < list.size(); j++){
+                pageData.add(list.get(j));
+            }
+        }else {
+            if (pageIndex != totalPage){
+                for (int j = pageIndex*8-8; j < pageIndex*8; j++){
+                    pageData.add(list.get(j));
+                }
+            }else {
+                for (int j = pageIndex*8-8; j < list.size(); j++){
+                    pageData.add(list.get(j));
+                }
+            }
+        }
+
+        model.addAttribute("totalpage",totalPage);
+        model.addAttribute("filelist",pageData);
+        model.addAttribute("currentPage",pageIndex);
+        model.addAttribute("previousPage",pageIndex-1);
+        model.addAttribute("nextPage",pageIndex+1);
 //        request.setAttribute("imagesPath",path);
         return "userdata";
     }
