@@ -78,7 +78,11 @@
 				<!--<button type="button" class="btn btn-info btn-xs"  data-toggle="modal" data-target="#delFile">-->
 				<!--<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>&lt;!&ndash; 删除文件图标 &ndash;&gt;-->
 				<!--</button>-->
-				<a th:if="${username}"><button type="submit" class="btn btn-danger btn-xs" onclick="batchDelete()"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span><!-- 删除文件图标 --></button></a>
+				<a th:if="${username}">
+					<button type="submit" class="btn btn-danger btn-xs" onclick="batchDelete()">
+					<span class="glyphicon glyphicon-minus" aria-hidden="true"></span><!-- 删除文件图标 -->
+				</button>
+				</a>
 			</div>
 
 
